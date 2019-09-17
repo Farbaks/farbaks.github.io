@@ -1,0 +1,24 @@
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+</IfModule>
+
+#disable directory listing
+Options -Indexes
+
+#Rewrite api URL for admin action
+Options +FollowSymLinks
+RewriteEngine On
+
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^([A-Za-z0-9-]+)?$ /flightsearchresult.php?action=$1 [NC,L]
+
+RewriteRule ^api/flights/([A-Za-z0-9-]+)?$ assets/api/flighthandler.php?action=$1 [NC,L]
+
+RewriteRule ^api/flights/([A-Za-z0-9-]+)?$ assets/api/flighthandler.php?action=$1 [NC,L]
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^\.]+)$ $1.php [NC]
+RewriteRule ^([^\.]+)$ $1.html [NC]
+
